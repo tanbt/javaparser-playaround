@@ -1,7 +1,8 @@
 package com.mylocal.parsers;
 
+import com.mylocal.mapper.FieldTypeMapper;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.util.List;
 
@@ -10,10 +11,17 @@ import java.util.List;
  */
 public class Polymer3Parser {
 
-    public static Document generateDocument(List<EntityField> pojoFields) {
-        Document doc = Jsoup.parse("");
-
-        return doc;
+    /**
+     * Prepared content for template
+     */
+    public static String generateDocument(List<EntityField> pojoFields) {
+        Element body = Jsoup.parse("").body();
+        pojoFields.forEach(f -> {
+            Element newEl = new Element(FieldTypeMapper.getComponent(f.getVarType()));
+            newEl.attr("id", f.getVarName());
+            body.appendChild(newEl);
+        });
+        return body.html();
     }
 
 }
