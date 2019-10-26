@@ -1,4 +1,4 @@
-package com.mylocal;
+package com.mylocal.parsers;
 
 public class EntityField {
     String modifier;
