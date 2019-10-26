@@ -3,13 +3,10 @@ package com.mylocal.parsers;
 import com.mylocal.mapper.FieldTypeMapper;
 import com.mylocal.mapper.PolymerImportMapper;
 import com.mylocal.parsers.entity.EntityClass;
-import com.mylocal.parsers.entity.EntityField;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,4 +55,5 @@ public class Polymer3Parser {
             }
         };
     }
+
 }

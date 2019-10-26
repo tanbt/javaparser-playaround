@@ -3,9 +3,6 @@ package com.mylocal;
 import com.mylocal.parsers.JavaParser;
 import com.mylocal.parsers.Polymer3Parser;
 import com.mylocal.parsers.entity.EntityClass;
-import com.mylocal.parsers.entity.EntityField;
-
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
