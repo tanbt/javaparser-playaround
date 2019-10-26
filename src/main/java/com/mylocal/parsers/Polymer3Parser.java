@@ -1,6 +1,7 @@
 package com.mylocal.parsers;
 
 import com.mylocal.mapper.FieldTypeMapper;
+import com.mylocal.parsers.entity.EntityField;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 

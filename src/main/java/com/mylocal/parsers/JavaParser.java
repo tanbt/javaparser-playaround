@@ -8,6 +8,8 @@ import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.utils.CodeGenerationUtils;
 import com.github.javaparser.utils.SourceRoot;
 import com.mylocal.App;
+import com.mylocal.parsers.entity.EntityClass;
+import com.mylocal.parsers.entity.EntityField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
  * Read a POJO source to get fields metadata
  */
 public class JavaParser {
-    public static List<EntityField> read(String resourceRootPath, String fileName) {
+    public static EntityClass read(String resourceRootPath, String fileName) {
         SourceRoot sourceRoot = new SourceRoot(CodeGenerationUtils.mavenModuleRoot(App.class)
                 .resolve(resourceRootPath));
         CompilationUnit cu = sourceRoot.parse("", fileName);
@@ -32,7 +34,8 @@ public class JavaParser {
                 ));
             }
         }, entityFields);
-        return entityFields;
+
+        return new EntityClass(cu.getType(0).getName().asString(), entityFields);
     }
 
     private static String getTopLevelType(FieldDeclaration fd) {
