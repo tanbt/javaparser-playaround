@@ -10,7 +10,7 @@ public class JavaParserTest {
 
     @Test
     public void shouldReadFields() {
-        List<EntityField> entityFields = JavaParser.read("User.java");
+        List<EntityField> entityFields = JavaParser.read("src/test/resources", "User.java");
         assertTrue(entityFields.size() == 4);
     }
 

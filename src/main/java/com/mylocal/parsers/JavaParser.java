@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JavaParser {
-    public static List<EntityField> read(String fileName) {
+    public static List<EntityField> read(String resourceRootPath, String fileName) {
         SourceRoot sourceRoot = new SourceRoot(CodeGenerationUtils.mavenModuleRoot(App.class)
-                .resolve("src/main/resources"));
+                .resolve(resourceRootPath));
         CompilationUnit cu = sourceRoot.parse("", fileName);
 
         List<EntityField> entityFields = new ArrayList<>();
