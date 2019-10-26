@@ -10,6 +10,9 @@ import com.mylocal.App;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Read a POJO source to get fields metadata
+ */
 public class JavaParser {
     public static List<EntityField> read(String resourceRootPath, String fileName) {
         SourceRoot sourceRoot = new SourceRoot(CodeGenerationUtils.mavenModuleRoot(App.class)
