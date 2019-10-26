@@ -9,9 +9,9 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        EntityClass entityFields = JavaParser.read("src/main/resources", "User.java");
-        System.out.println(entityFields);
-//        String html = Polymer3Parser.generateDocument(entityFields);
-//        System.out.println(html);
+        EntityClass eClass = JavaParser.read("src/main/resources", "User.java");
+
+        String compContent = Polymer3Parser.generateComponent(eClass);
+        System.out.println(compContent);
     }
 }

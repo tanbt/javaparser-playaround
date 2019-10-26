@@ -12,7 +12,7 @@ public class FieldTypeMapper {
     }};
 
     /**
-     * Smarter mapper is important.
+     * todo: Smarter mapper is important.
      */
     public static String getComponent(String fieldType) {
         return javaTypeToComponent.get(fieldType);
