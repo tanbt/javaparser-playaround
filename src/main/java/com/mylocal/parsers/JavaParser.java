@@ -1,7 +1,9 @@
 package com.mylocal.parsers;
 
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.utils.CodeGenerationUtils;
 import com.github.javaparser.utils.SourceRoot;
@@ -26,10 +28,18 @@ public class JavaParser {
                 f.add(new EntityField(
                         fd.getModifiers().get(0).getKeyword().asString(),
                         fd.getVariables().get(0).getNameAsString(),
-                        fd.getVariables().get(0).getTypeAsString()
+                        getTopLevelType(fd)
                 ));
             }
         }, entityFields);
         return entityFields;
+    }
+
+    private static String getTopLevelType(FieldDeclaration fd) {
+        Type type = fd.getVariables().get(0).getType();
+        if (type.isPrimitiveType()) {
+            return type.asString();
+        }
+        return fd.getVariables().get(0).getType().getChildNodes().get(0).toString();
     }
 }
